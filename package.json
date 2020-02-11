@@ -1,0 +1,25 @@
+{
+  "name": "hugo-tailwindcss-starter",
+  "version": "0.1.0",
+  "description": "Starter blank theme for Hugo with TailwindCSS ",
+  "scripts": {
+    "css:watch": "node_modules/.bin/watch \"npm run css:build:dev\" ./static-src/css",
+    "css:build:dev": "cross-env NODE_ENV=development npm run css:build",
+    "css:build:prod": "cross-env NODE_ENV=production npm run css:build",
+    "css:build": "node_modules/.bin/postcss static-src/css/styles.css -o static/css/styles.css"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^1.1.4"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.5",
+    "autoprefixer": "^9.7.4",
+    "cross-env": "^6.0.3",
+    "cssnano": "^4.1.10",
+    "postcss": "^7.0.26",
+    "postcss-cli": "^7.1.0",
+    "watch": "^1.0.2"
+  }
+}

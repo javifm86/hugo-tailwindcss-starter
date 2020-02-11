@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+<div class="container mx-auto">
+  <h1 class="text-3xl mb-6">{{ .Title }}</h1>
+  <div class="flex flex-wrap -mx-4">
+    {{ range .Pages.ByPublishDate.Reverse }}
+    <div class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-8">
+      <div class="rounded overflow-hidden shadow-md bg-white p-4 h-full">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </div>
+          <p class="text-gray-700 text-base">
+            {{.Summary}}
+          </p>
+        </div>
+        {{ with .Params.tags }}
+        <div class="px-6 py-4">
+          {{ range . }}
+            {{ $href := print (absURL "tags/") (urlize .) }}
+            <a href="{{ $href }}" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{{ . }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+{{ end }}
